@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Multi Step Register Form</title>
+	<link rel="stylesheet" href="/css/main.css">
+	<script defer src="/js/main.js"></script>
+</head>
+<body>
+	<div class="container">
+		<form class="form">
+			<div class="form__state state1">
+				<h3 class="form__title">Register</h3>
+				<div class="form__inputs">
+					<label>Name
+						<input type="text" class="name" name="name" placeholder="enter your name" required>
+					</label>
+					<label>Email
+						<input type="email" class="email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" name="email" placeholder="example@gmail.com" required>
+					</label>
+				</div>
+				<div class="form__btn">
+					<button type="button" class="continue">Continue</button>
+				</div>
+			</div>
+			<div class="form__state state2">
+				<h3 class="form__title">Which topics you are interested in?</h3>
+				<div class="form__inputs">
+					<label>Software Development
+						<input type="checkbox" class="checkbox visually-hidden" name="software_development">
+					</label>
+					<label>User Experience
+						<input type="checkbox" class="checkbox visually-hidden" name="user_experience">
+					</label>
+					<label>Graphic Design
+						<input type="checkbox" class="checkbox visually-hidden" name="graphic_design">
+					</label>
+				</div>
+				<div class="form__btn">
+					<button type="button" class="continue">Continue</button>
+				</div>
+			</div>
+			<div class="form__state state3">
+				<h3 class="form__title">Summary</h3>
+				<div class="form__summary">
+					<p>Name: <span class="summary-name"></span></p>
+					<p>Email: <span class="summary-email"></span></p>
+					<p>Topics:</p>
+					<ul class="summary-topics"></ul>
+				</div>
+				<div class="form__btn">
+					<button type="submit" class="submit">Confirm</button>
+				</div>
+			</div>			
+		</form>
+		<div class="steps">
+			<div class="steps__info">
+				Step <span class="steps__current"></span> of <span class="steps__total"></span>
+			</div>
+			<ul class="steps__list" role="list"></ul>			
+		</div>
+	</div>
+</body>
+</html>

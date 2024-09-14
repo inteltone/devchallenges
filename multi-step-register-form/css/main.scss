@@ -1,0 +1,209 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,100..900;1,100..900&display=swap');
+:root{
+	--max-container: 54.4rem;
+	--gutter: 2rem;
+	--ff-prim: 'Inter', sans-serif;
+	--fz-base: 1.8rem;
+	--clr-accent: #652CD1;
+	--clr-accent-light: #845eef;
+	--clr-dark: #121826;
+	--clr-gray-200: #e5e7ec; // btn text
+	--clr-gray-500: #a2a2a8; // label
+	--clr-gray-600: #4d5562; // border
+	--clr-gray-700: #394050; // label:has checkbox
+	--clr-gray-800: #212936; // container
+	--clr-light: #E5E7EB;
+	--tr: .3s ease-in-out;
+}
+*, *::before, *::after{
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+html{
+	font-size: 62.5%;
+	// & *{outline: 1px solid red;}
+}
+body{
+	display: grid;
+	place-items: center;
+	block-size: 100vh;
+	color: var(--clr-light);
+	background-color: var(--clr-dark);
+	font-family: var(--ff-prim);
+	font-size: var(--fz-base);
+}
+button{
+	background-color: transparent;
+	border: none;
+	cursor: pointer;
+	&:focus-visible{
+		outline: none;
+	}
+}
+[role="list"]{
+	list-style: none;
+}
+.visually-hidden{
+	border: 0;
+	clip: rect(0 0 0 0);
+	height: auto;
+	margin: 0;
+	overflow: hidden;
+	padding: 0;
+	position: fixed;
+	width: 1px;
+	white-space: nowrap;
+}
+.container{	
+	inline-size: min(var(--max-container), calc(100% - var(--gutter) * 2));
+}
+
+.form{
+	display: grid;	
+	grid-template-columns: 1fr;
+	grid-template-rows: 1fr auto;
+	margin-block-end: 1.8rem;
+	padding: clamp(2rem, -0.1428rem + 6.6964vw, 5rem);
+	background-color: var(--clr-gray-800);
+	border: 1px solid var(--clr-gray-600);
+	border-radius: 1.5rem;
+	&__state{
+		display: none;
+		grid-column: 1/span 1;
+		grid-row: 1/span 1;
+		&.state3{
+			.form__title{
+				margin-block-end: 2.5rem;
+			}			
+		}
+		&.is-current{
+			display: block;
+		}
+	}
+	&__title{		
+		margin-block-end: 4.5rem;
+		font-size: 2.4rem;
+		font-weight: 500;
+	}
+	&__inputs{
+		display: grid;
+		gap: 3rem;
+		margin-block-end: 4rem;
+	}
+	&__summary{
+		--gap: 1rem;
+		display: grid;
+		gap: var(--gap);
+		margin-block-end: 4rem;
+		:nth-child(2){
+			margin-block-end: 1.5rem;
+		}
+		ul{
+			display: grid;
+			gap: var(--gap);
+			padding-inline-start: 2rem;
+			font-size: 1.6rem;
+		}
+	}
+	label{
+		display: grid;
+		gap: 1rem 0;
+		color: var(--clr-gray-500);
+		font-size: 1.5rem;
+		&:has([type='checkbox']){
+			padding: 1.8rem;
+			background-color: var(--clr-gray-700);
+			border: 2px solid var(--clr-gray-600);
+			border-radius: 1.2rem;
+			cursor: pointer;
+		}
+		&:has([type='checkbox']:checked){
+			color: var(--clr-light);
+			background-color: var(--clr-accent);
+			border-color: var(--clr-accent-light);
+		}
+	}
+	input{
+		inline-size: 100%;
+		padding: 1.8rem;
+		color: inherit;		
+		font-size: 1.3rem;		
+		line-height: 1;
+		border: 2px solid var(--clr-gray-600);
+		border-radius: 1.2rem;
+		&:is([type='text'],[type='email']){
+			background-color: transparent;
+		}
+		&[type='checkbox']{
+			background-color: var(--clr-gray-800);
+		}
+		&:focus-visible{
+			outline: none;
+			border-color: var(--clr-accent);
+		}
+		&:focus-visible::placeholder{
+			color: transparent;
+		}
+	}
+	p{
+		color: var(--clr-gray-500);
+		font-size: 1.6rem;
+		span{
+			color: var(--clr-light);
+		}
+	}
+	&__btn{
+		
+		display: flex;
+		justify-content: center;
+	}
+	button{
+		padding: 1.4rem 4rem;
+		color: var(--clr-gray-200);
+		background-color: var(--clr-accent);
+		font-family: inherit;
+		font-size: 1.5rem;
+		border-radius: 100vw;
+		box-shadow: 
+		inset 0 -1rem 1.5rem hsl(260, 67%, 43%),
+		inset 0 0 1.5rem hsl(260, 100%, 69%);
+		&:disabled{
+			pointer-events: none;
+			opacity: .5;
+		}		
+		&:enabled{
+			pointer-events: auto;
+		}		
+	}
+}
+.steps{
+	display: grid;
+	grid-template-columns: 1fr max-content 1fr;
+	gap: 0 3rem;
+	color: var(--clr-gray-600);
+	font-size: 1.4rem;
+	&__info{
+		justify-self: end;
+	}
+	&__list{
+		display: flex;
+		gap: 0 2rem;
+		li{
+			inline-size: 1.2rem;
+			block-size: 1.2rem;
+			background-color: var(--clr-gray-600);
+			border-radius: 100vw;			
+			&.is-current{
+				background-color: var(--clr-accent);
+				box-shadow: 0 0 0 .6rem #342c62;
+			}
+		}
+	}
+	@media (max-width: 428px) {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		gap: 2rem 0;
+	}
+}
